@@ -1,27 +1,31 @@
 import React,{useState} from 'react'
 
 export default function About() {
-  const [mystyle, setMyStyle] = useState({
-        color:'black',
-        backgroundColor:'white'  
-  })
-  const [btntext,setbtnText] = useState("Enable Dark Mode")
-  let  toggleStyle = ()=>{
-   if(mystyle.color === 'black'){
-      setMyStyle({
-        color:'white',
-        backgroundColor:'black',
-        border:'2px solid white'
-      })
-      setbtnText("Enable dark mode")    
-   }else{
-    setMyStyle({
-      color:'black',
-        backgroundColor:'white'
+const[btxtext,setBtx] = useState("Enable dark mode");
+const[mystyle,setMode] = useState({
+  color:'black',
+  backgroundColor:'white'
+})
+let toggleStyle = ()=>{
+  if(mystyle.color === 'black'){
+    setMode({
+      color:'white',
+    backgroundColor:'black',
+    border:'2px solid white'
+    
     })
-    setbtnText("Enable light mode")
-   }
+    setBtx('Enable light mode')
   }
+  else{
+    setMode({
+      color:'black',
+    backgroundColor:'white'
+    })
+    setBtx('Enable dark mode')
+  }
+  
+}
+
   return (
     <div>
       <div className="container" style={mystyle}>
@@ -29,7 +33,7 @@ export default function About() {
             <div className="accordion" id="accordionExample" style={mystyle}>
             <div className="accordion-item" >
               <h2 className="accordion-header" id="headingOne">
-                <button className="accordion-button" style={mystyle}type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button className="accordion-button" style={mystyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Accordion Item #1
                 </button>
               </h2>
@@ -66,7 +70,7 @@ export default function About() {
             </div>
           </div>
             <div className="container  my-3">
-               <button onClick={toggleStyle} type="button" className="btn btn-primary">{btntext}</button>
+               <button onClick={toggleStyle}  type="button" className="btn btn-primary">{btxtext}</button>
           
             </div>
           
